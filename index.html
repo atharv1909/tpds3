@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home"><i class="bi bi-mortarboard-fill me-2"></i>Student Portal</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#register">Register</a></li>
+        <li class="nav-item"><a class="nav-link" href="#students">Students</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PROFILE BANNER -->
+<section id="home" class="banner text-white py-4">
+  <div class="container d-flex flex-wrap align-items-center gap-4">
+    <div class="avatar"><img src ="verstappen.avif" alt="student photo"></div>
+    <div class="flex-grow-1">
+      <h2 class="fw-bold mb-1">MAX VERSTAPPEN</h2>
+      <p class="mb-0 small">Roll No: BT24CSD069</p>
+      <p class="mb-0 small">Branch: MECHANICAL &amp; Engineering</p>
+      <p class="mb-2 small">Batch: 2022 - 2026</p>
+      <a href="#subjects" class="btn btn-primary btn-sm">View Details</a>
+    </div>
+    <div class="bg-white text-dark rounded-3 p-3 shadow perf-box">
+      <strong>Overall Performance</strong>
+      <div class="d-flex align-items-center gap-2 mt-2">
+        <div class="progress flex-grow-1" style="height:14px">
+          <div id="perfBar" class="progress-bar bg-success" style="width:0%"></div>
+        </div>
+        <span id="perfText" class="small fw-semibold">0%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container my-4">
+
+  <!-- STAT CARDS -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="stat stat-blue"><i class="bi bi-people-fill"></i><div><small>Attendance</small><h4>92%</h4></div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat stat-green"><i class="bi bi-bar-chart-fill"></i><div><small>CGPA</small><h4>8.4</h4></div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat stat-yellow"><i class="bi bi-file-earmark-text-fill"></i><div><small>Assignments</small><h4>8/10</h4></div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat stat-red"><i class="bi bi-book-fill"></i><div><small>Total Credits</small><h4>120</h4></div></div>
+    </div>
+  </div>
+
+  <!-- SUBJECT TABLE -->
+  <div id="subjects" class="card shadow-sm mb-5">
+    <div class="card-body">
+      <h5 class="fw-bold mb-3">Subject-wise Performance</h5>
+      <div class="row g-2 mb-3">
+        <div class="col-md-6">
+          <input type="text" id="search" class="form-control" placeholder="Search subject...">
+        </div>
+        <div class="col-md-6 d-flex justify-content-md-end align-items-center gap-2">
+          <label class="fw-semibold">Filter by Grade:</label>
+          <select id="gradeFilter" class="form-select w-auto">
+            <option>All</option><option>A</option><option>B</option><option>C</option><option>D</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle text-center">
+          <thead class="table-primary-dark">
+            <tr>
+              <th>#</th><th>Subject</th><th>Teacher</th><th>Internal (30)</th>
+              <th>External (70)</th><th>Total (100)</th><th>Grade</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="subjectBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTRATION FORM -->
+  <div id="register" class="card shadow-sm mb-5">
+    <div class="card-body">
+      <h5 class="fw-bold mb-3">Student Registration</h5>
+      <form id="regForm" class="row g-3 needs-validation" novalidate>
+        <div class="col-md-6">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="name" class="form-control" required>
+          <div class="invalid-feedback">Please enter name.</div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Roll Number</label>
+          <input type="text" id="roll" class="form-control" required>
+          <div class="invalid-feedback">Please enter roll number.</div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input type="email" id="email" class="form-control" required>
+          <div class="invalid-feedback">Enter a valid email.</div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Branch</label>
+          <select id="branch" class="form-select" required>
+            <option value="">Choose...</option>
+            <option>CSE</option><option>IT</option><option>ECE</option><option>Mechanical</option>
+          </select>
+          <div class="invalid-feedback">Select a branch.</div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Register Student</button>
+          <button type="reset" class="btn btn-secondary">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- REGISTERED STUDENTS TABLE -->
+  <div id="students" class="card shadow-sm mb-5">
+    <div class="card-body">
+      <h5 class="fw-bold mb-3">Registered Students <span id="count" class="badge bg-primary">0</span></h5>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered align-middle text-center">
+          <thead class="table-dark">
+            <tr><th>#</th><th>Name</th><th>Roll No</th><th>Email</th><th>Branch</th><th>Action</th></tr>
+          </thead>
+          <tbody id="studentBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5 class="fw-bold">About</h5>
+      <p class="mb-0">This portal lets students register and lets users view academic performance.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SUBJECT DETAILS MODAL -->
+<div class="modal fade" id="subjectModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title">Subject Details</h6>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
